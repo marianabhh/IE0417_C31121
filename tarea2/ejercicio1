@@ -1,0 +1,123 @@
+# Tarea 2: Análisis de Requerimientos y Casos de Uso
+
+## Escenario seleccionado: Plataforma de pedidos para un restaurante
+
+---
+
+## a. Lista de requerimientos
+
+### Requerimientos funcionales
+
+1. El sistema debe permitir a los usuarios registrarse con correo electrónico y contraseña.
+2. El sistema debe permitir a los usuarios iniciar sesión.
+3. El sistema debe mostrar el menú del restaurante con sus respectivos precios y descripciones.
+4. El sistema debe permitir a los usuarios agregar productos al carrito de compras.
+5. El sistema debe permitir a los usuarios realizar pedidos y confirmar la compra.
+6. El sistema debe permitir a los usuarios ver el estado de su pedido en tiempo real.
+
+### Requerimientos no funcionales
+
+1. El sistema debe responder a las solicitudes en un tiempo menor a 2 segundos en el 95% de los casos.
+2. El sistema debe estar disponible el 99% del tiempo.
+3. El sistema debe garantizar la seguridad de los datos mediante cifrado de contraseñas.
+
+### Requerimiento técnico / de interfaz
+
+1. El sistema debe ofrecer una API REST para la gestión de pedidos y usuarios.
+
+---
+
+## b. Casos de uso
+
+### Caso de uso 1: Realizar pedido
+
+**Actor principal:** Cliente
+
+**Precondiciones:**
+
+- El usuario debe estar registrado e iniciar sesión.
+- El sistema debe estar disponible.
+
+**Postcondiciones:**
+
+- El pedido queda registrado en el sistema.
+- El estado del pedido se actualiza a “En preparación”.
+
+**Flujo principal:**
+
+1. El cliente accede al menú.
+2. El cliente selecciona productos.
+3. El cliente agrega productos al carrito.
+4. El cliente confirma el pedido.
+5. El sistema procesa el pedido.
+6. El sistema muestra confirmación al usuario.
+
+**Flujos alternativos:**
+
+- **4a. Carrito vacío:**  
+  El sistema muestra un mensaje indicando que no hay productos.
+
+- **5a. Error en el sistema:**  
+  El sistema muestra un mensaje de error.  
+  El usuario puede intentar nuevamente.
+
+---
+
+### Caso de uso 2: Iniciar sesión
+
+**Actor principal:** Usuario
+
+**Precondiciones:**
+
+- El usuario debe estar registrado.
+
+**Postcondiciones:**
+
+- El usuario accede al sistema.
+
+**Flujo principal:**
+
+1. El usuario ingresa su correo y contraseña.
+2. El sistema valida las credenciales.
+3. El sistema permite el acceso.
+
+**Flujos alternativos:**
+
+- **2a. Credenciales incorrectas:**  
+  El sistema muestra un mensaje de error.  
+  El usuario puede intentar nuevamente.
+
+- **2b. Usuario no registrado:**  
+  El sistema sugiere registrarse.
+
+---
+
+## c. Diagrama de casos de uso (UML)
+
+```plantuml
+@startuml
+left to right direction
+
+actor Usuario
+actor Cliente
+actor Administrador
+
+Usuario <|-- Cliente
+Usuario <|-- Administrador
+
+rectangle Sistema {
+  (Iniciar sesión)
+  (Ver menú)
+  (Realizar pedido)
+  (Procesar pago)
+  (Aplicar descuento)
+}
+
+Cliente --> (Ver menú)
+Cliente --> (Realizar pedido)
+Cliente --> (Iniciar sesión)
+
+(Realizar pedido) .> (Procesar pago) : <<include>>
+(Aplicar descuento) .> (Realizar pedido) : <<extend>>
+
+@enduml
