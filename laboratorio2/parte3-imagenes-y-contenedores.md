@@ -86,3 +86,69 @@ mucho más liviano y rápido que una máquina virtual.
 La imagen es una plantilla estática e inmutable. El contenedor es una 
 instancia en ejecución creada a partir de esa imagen, con su propio 
 sistema de archivos temporal.
+
+
+## Administración de contenedores
+
+## Comando ejecutado
+docker run -it --name mi-ubuntu ubuntu bash
+
+### Explicación
+Crea un contenedor con un nombre específico usando --name, lo que facilita 
+referenciarlo después sin usar el ID.
+
+---
+
+## Dentro del contenedor
+echo "Hola desde el contenedor" > mensaje.txt
+cat mensaje.txt
+
+### Resultado obtenido
+Hola desde el contenedor
+
+---
+
+## Comandos ejecutados
+docker start mi-ubuntu
+docker exec -it mi-ubuntu bash
+
+### Explicación
+docker start reinicia un contenedor detenido. docker exec permite entrar 
+a un contenedor que ya está corriendo sin crear uno nuevo.
+
+### Resultado obtenido
+El archivo mensaje.txt seguía existiendo con su contenido original.
+
+---
+
+## Comandos ejecutados
+docker stop mi-ubuntu
+docker rm mi-ubuntu
+
+### Explicación
+docker stop detiene el contenedor. docker rm lo elimina. No se puede 
+eliminar un contenedor mientras está corriendo.
+
+### Reflexión
+Los datos creados dentro del contenedor se pierden al eliminarlo, por 
+eso se dice que los contenedores son desechables.
+
+---
+
+## Preguntas de reflexión
+
+**1. ¿Qué ventaja tiene asignar nombres a los contenedores?**
+Permite referenciarlo fácilmente con un nombre legible en lugar de 
+usar el ID largo.
+
+**2. ¿Qué diferencia hay entre crear un contenedor nuevo y reiniciar uno existente?**
+Al crear uno nuevo se parte de cero. Al reiniciar uno existente se 
+conservan los cambios hechos dentro de él.
+
+**3. ¿Qué sucede con los datos creados dentro de un contenedor si este se elimina?**
+Se pierden permanentemente porque el sistema de archivos del contenedor 
+se elimina junto con él.
+
+**4. ¿Por qué se dice que los contenedores son desechables?**
+Porque están diseñados para crearse, usarse y eliminarse fácilmente, 
+sin que los datos importantes dependan de ellos.
