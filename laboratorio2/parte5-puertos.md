@@ -10,6 +10,7 @@ La opción -p mapea puertos entre el host y el contenedor.
 ### Resultado obtenido
 La aplicación fue accesible en http://localhost:5000 mostrando
 "Hola desde Flask en Docker"
+<img width="1919" height="1023" alt="image" src="https://github.com/user-attachments/assets/970a1b2f-f03c-4de1-a943-3fbbcafbb3dd" />
 
 ---
 
@@ -23,6 +24,7 @@ se accede por el 8080.
 
 ### Resultado obtenido
 La misma aplicación fue accesible en http://localhost:8080
+<img width="1919" height="1001" alt="image2" src="https://github.com/user-attachments/assets/adc51510-e1dd-4849-9ac7-b9612c45b4d5" />
 
 ---
 
