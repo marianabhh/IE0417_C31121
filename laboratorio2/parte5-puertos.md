@@ -8,8 +8,6 @@ La opción -p mapea puertos entre el host y el contenedor.
 -p 5000:5000 significa puerto 5000 del host → puerto 5000 del contenedor.
 
 ### Resultado obtenido
-La aplicación fue accesible en http://localhost:5000 mostrando
-"Hola desde Flask en Docker"
 <img width="1919" height="1023" alt="image" src="https://github.com/user-attachments/assets/970a1b2f-f03c-4de1-a943-3fbbcafbb3dd" />
 
 ---
@@ -23,7 +21,6 @@ El contenedor sigue escuchando en 5000 internamente, pero desde afuera
 se accede por el 8080.
 
 ### Resultado obtenido
-La misma aplicación fue accesible en http://localhost:8080
 <img width="1919" height="1001" alt="image2" src="https://github.com/user-attachments/assets/adc51510-e1dd-4849-9ac7-b9612c45b4d5" />
 
 ---
@@ -118,3 +115,46 @@ estado del contenedor y configuración de red.
 **4. ¿Por qué es importante observar el consumo de recursos?**
 Para detectar si un contenedor está consumiendo demasiada memoria o 
 CPU y está afectando el rendimiento del sistema.
+
+
+## Variables de entorno
+
+## Comando ejecutado
+docker run --name app-env -p 5000:5000 -e MENSAJE="Hola desde una variable de entorno" laboratorio-flask:1.0
+
+### Explicación
+La opción -e permite pasar variables de entorno al contenedor que la
+aplicación puede leer y usar.
+
+### Resultado obtenido
+<img width="1916" height="1016" alt="image3" src="https://github.com/user-attachments/assets/44509430-dd79-46af-9dbb-4c8dd56cec38" />
+
+
+---
+
+## Comando ejecutado
+docker run --name app-env-2 -p 5000:5000 -e MENSAJE="Configuración cambiada sin modificar la imagen" laboratorio-flask:1.0
+
+### Resultado obtenido
+<img width="1919" height="1010" alt="image4" src="https://github.com/user-attachments/assets/a25bcc24-d53c-435d-9284-a1bb968779c7" />
+
+
+---
+
+## Preguntas de reflexión
+
+**1. ¿Por qué es útil configurar aplicaciones mediante variables de entorno?**
+Permite cambiar el comportamiento de la aplicación sin modificar ni 
+reconstruir la imagen.
+
+**2. ¿Qué tipo de información podría configurarse así?**
+URLs de bases de datos, credenciales, puertos, modos de ejecución, 
+mensajes, entre otros.
+
+**3. ¿Por qué no es buena práctica guardar contraseñas dentro del código?**
+Porque el código puede ser público en GitHub y las contraseñas quedarían
+expuestas a cualquiera.
+
+**4. ¿Qué ventaja tiene usar la misma imagen con diferentes configuraciones?**
+Se construye una sola vez y se reutiliza con distintas configuraciones,
+ahorrando tiempo y espacio.
