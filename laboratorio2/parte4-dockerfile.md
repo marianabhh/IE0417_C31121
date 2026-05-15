@@ -37,3 +37,53 @@ pueda acceder a la app, esta debe aceptar conexiones externas.
 Localmente depende de que Python y Flask estén instalados en la máquina. 
 En Docker todo viene empaquetado en la imagen, funcionando igual en 
 cualquier sistema donde esté Docker.
+
+## Construcción de la imagen con Dockerfile
+
+## Instrucciones del Dockerfile
+
+**FROM python:3.11-slim**
+Define la imagen base, en este caso Python 3.11 en versión slim (liviana, 
+sin herramientas innecesarias).
+
+**WORKDIR /app**
+Establece el directorio de trabajo dentro del contenedor.
+
+**COPY requirements.txt .**
+Copia solo el archivo de dependencias primero para aprovechar el caché 
+de Docker.
+
+**RUN pip install --no-cache-dir -r requirements.txt**
+Instala las dependencias dentro del contenedor.
+
+**COPY . .**
+Copia el resto del código al contenedor.
+
+**EXPOSE 5000**
+Indica que la aplicación usará el puerto 5000.
+
+**CMD ["python", "app.py"]**
+Define el comando que se ejecuta al iniciar el contenedor.
+
+---
+
+## Preguntas de reflexión
+
+**1. ¿Qué es una imagen base?**
+Es la imagen de partida sobre la que se construye la nueva imagen.
+
+**2. ¿Por qué se usa una imagen slim?**
+Para reducir el tamaño final de la imagen eliminando herramientas 
+innecesarias.
+
+**3. ¿Por qué se copian primero las dependencias y luego el código?**
+Para aprovechar el caché de Docker. Si el código cambia pero las 
+dependencias no, Docker no las reinstala.
+
+**4. ¿Qué diferencia hay entre RUN y CMD?**
+RUN se ejecuta al construir la imagen. CMD se ejecuta cuando se 
+inicia el contenedor.
+
+**5. ¿Qué pasaría si se elimina la imagen pero no el Dockerfile?**
+Se puede reconstruir la imagen en cualquier momento usando el 
+Dockerfile.
