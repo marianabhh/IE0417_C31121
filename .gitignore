@@ -3,3 +3,13 @@ laboratorio-depuracion/gdb_funciones
 laboratorio-depuracion/error_logico
 laboratorio-depuracion/error_sintaxis
 laboratorio-depuracion/prueba
+laboratorio-depuracion/memory_leak
+laboratorio-depuracion/invalid_access
+laboratorio-depuracion/use_after_free
+laboratorio-depuracion/use_after_free_asan
+laboratorio-depuracion/race_condition
+laboratorio-depuracion/race_condition_tsan
+laboratorio-depuracion/race_condition_corregido
+laboratorio-depuracion/race_condition_corregido_tsan
+laboratorio-depuracion/reto
+laboratorio-depuracion/reto_asan
