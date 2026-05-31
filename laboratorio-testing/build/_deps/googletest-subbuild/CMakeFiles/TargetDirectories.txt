@@ -1,3 +1,0 @@
-/mnt/c/Users/maria/IE0417_C31121/laboratorio-testing/build/_deps/googletest-subbuild/CMakeFiles/googletest-populate.dir
-/mnt/c/Users/maria/IE0417_C31121/laboratorio-testing/build/_deps/googletest-subbuild/CMakeFiles/edit_cache.dir
-/mnt/c/Users/maria/IE0417_C31121/laboratorio-testing/build/_deps/googletest-subbuild/CMakeFiles/rebuild_cache.dir
