@@ -53,3 +53,7 @@ Se corrigió restaurando el valor esperado a `5` y el workflow volvió a pasar c
 5. CI mejora la colaboración porque todos confían en que el código en main siempre compila y pasa las pruebas.
 
 ![GitHub Actions exitoso](actions-exitoso.png)
+
+![Actions con fallo](actions-fallido.png)
+
+![Actions corregido](actions-corregido.png)
