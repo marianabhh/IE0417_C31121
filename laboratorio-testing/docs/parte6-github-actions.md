@@ -51,3 +51,5 @@ Se corrigió restaurando el valor esperado a `5` y el workflow volvió a pasar c
 3. Ejecutar pruebas antes de integrar evita introducir errores en la rama principal.
 4. GitHub Actions muestra el log completo del error, el paso que falló y el mensaje de la prueba.
 5. CI mejora la colaboración porque todos confían en que el código en main siempre compila y pasa las pruebas.
+
+![GitHub Actions exitoso](actions-exitoso.png)
